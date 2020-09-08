@@ -5,21 +5,21 @@ sentences about cats, and save it in a personal list which could be modified (ad
 
 ## Goals
 
-[X] 1. **Sketch the plan**
-[ ] 2. **Create Tab Navigator: Search, Favourites, Add, Profile**
-[ ] 2.1 **_Search Tab Component_**
-[ ] 2.1.1 Create Redux Store to fetch all the data from the API at start:
-`{ facts: [... api response], user_data: { first: 'default', last: 'default ', favourites: [...], my_facts: [...] } }`
-[ ] 2.1.2 Show all results on flat list in FactCard Component which have favourite icon (no functionality yet).
-[ ] 2.1.3 Pressing the text navigate to fact details (stack navigator) with all the data.
-[ ] 2.1.4 Add input (KeyboardAvoidingView) which filter results `*any form*`.
-[ ] 2.1.5 Favourite functionality: Saves result on `user_data.favourites` array pressing the star.
-[ ] 2.2 **_Favourite Tab Component_**
-[ ] 2.2.1 Show favourites fact in FactCard, though can be removed unchecking the star icon.
-[ ] 2.2.2 Keep the fact info pressing the text (stack navigator) like in _Search Tab Component_.
-[ ] 2.3 **_Add Tab Component_**
-[ ] 2.3.1 TopTabNavigator with add and my facts
-[ ] 2.3.2 Add: Input for the fact and on submit save on facts and `my_facts`.
-[ ] 2.3.3 My Facts: FlatList of your facts where you can delete it pressing the trash icon.
-[ ] 2.4 **_Profile Tab Component_**
-[ ] 2.4.1 Info (name, favourite facts counter and created facts counter)
+1. **Sketch the plan**
+2. **Create Tab Navigator: Search, Favourites, Add, Profile**
+   2.1 **_Search Tab Component_**
+   2.1.1 Create Redux Store to fetch all the data from the API at start:
+   `{ facts: [... api response], user_data: { first: 'default', last: 'default ', favourites: [...], my_facts: [...] } }`
+   2.1.2 Show all results on flat list in FactCard Component which have favourite icon (no functionality yet).
+   2.1.3 Pressing the text navigate to fact details (stack navigator) with all the data.
+   2.1.4 Add input (KeyboardAvoidingView) which filter results `*any form*`.
+   2.1.5 Favourite functionality: Saves result on `user_data.favourites` array pressing the star.
+   2.2 **_Favourite Tab Component_**
+   2.2.1 Show favourites fact in FactCard, though can be removed unchecking the star icon.
+   2.2.2 Keep the fact info pressing the text (stack navigator) like in _Search Tab Component_.
+   2.3 **_Add Tab Component_**
+   2.3.1 TopTabNavigator with add and my facts
+   2.3.2 Add: Input for the fact and on submit save on facts and `my_facts`.
+   2.3.3 My Facts: FlatList of your facts where you can delete it pressing the trash icon.
+   2.4 **_Profile Tab Component_**
+   2.4.1 Info (name, favourite facts counter and created facts counter)
