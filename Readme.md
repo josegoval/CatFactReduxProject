@@ -7,8 +7,8 @@ sentences about cats, and save it in a personal list which could be modified (ad
 
 1. **Sketch the plan**
 2. **Create Tab Navigator: Search, Favourites, Add, Profile**
-   2.1 **_Search Tab Component_**
-   2.1.1 Create Redux Store to fetch all the data from the API at start:
+   2.1. **_Search Tab Component_**
+   2.1.1. Create Redux Store to fetch all the data from the API at start:
    `{ facts: [... api response], user_data: { first: 'default', last: 'default ', favourites: [...], my_facts: [...] } }`
    2.1.2 Show all results on flat list in FactCard Component which have favourite icon (no functionality yet).
    2.1.3 Pressing the text navigate to fact details (stack navigator) with all the data.
