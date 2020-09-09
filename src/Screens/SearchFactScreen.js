@@ -1,19 +1,18 @@
 // React
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, Button} from 'react-native';
 // Redux
-import {useSelector, useStore} from 'react-redux';
-import store from '../Redux/store';
+import {useSelector} from 'react-redux';
 
 export default function SearchFactScreen() {
   const facts = useSelector((state) => state.facts);
-  const store = useStore();
-  console.log(store.getState());
+
   return (
     <View>
-      {/* <Text>wholap</Text> */}
+      {/* <Text>Loaded: {String(asyncInitialState.loaded)}</Text>
+      <Text>Loading: {String(asyncInitialState.loading)}</Text> */}
       <FlatList
-        data={facts._W}
+        data={facts}
         renderItem={({item}) => <Text>{item.text}</Text>}
         keyExtractor={(item) => item._id}
       />

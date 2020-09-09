@@ -1,23 +1,49 @@
 // Redux
 import {combineReducers} from 'redux';
+// Middlewares
+import * as asyncInitialState from 'redux-async-initial-state';
 // Actions
 // Fetching data
 import {getFacts} from '../Utils/fetchFactsData';
 
-const INITIAL_STATE_OF_FACTS = getFacts();
+// Initial States
+// const INITIAL_STATE_OF_FACTS = getFacts();
+const INITIAL_STATE_OF_USER_DATA = {
+  first: 'Default First Name',
+  last: 'Default Last Name',
+  favourites: [],
+  my_facts: [],
+};
 
-const factsReducer = (state = INITIAL_STATE_OF_FACTS, action) => {
+const loadStore = () => {
+  return new Promise((resolve) => {
+    getFacts().then((facts) => {
+      resolve({
+        facts,
+        user_data: INITIAL_STATE_OF_USER_DATA,
+      });
+    });
+  });
+};
+
+// Reducers
+const factsReducer = (state = [], action) => {
   switch (action.type) {
     default:
       return state;
   }
 };
 
-const userReducer = (state = 'wholap', action) => {
+const userReducer = (state = {}, action) => {
   return state;
 };
 
-export default combineReducers({
-  facts: factsReducer,
-  user: userReducer,
-});
+const reducer = asyncInitialState.outerReducer(
+  combineReducers({
+    facts: factsReducer,
+    user_data: userReducer,
+    asyncInitialState: asyncInitialState.innerReducer,
+  }),
+);
+
+export {reducer as default, loadStore};
