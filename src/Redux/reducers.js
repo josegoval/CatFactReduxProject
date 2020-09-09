@@ -9,8 +9,11 @@ import {getFacts} from '../Utils/fetchFactsData';
 // Initial States
 // const INITIAL_STATE_OF_FACTS = getFacts();
 const INITIAL_STATE_OF_USER_DATA = {
-  first: 'Default First Name',
-  last: 'Default Last Name',
+  name: {
+    first: 'Default First Name',
+    last: 'Default Last Name',
+  },
+  _id: 'defaultID',
   favourites: [],
   my_facts: [],
 };
