@@ -3,6 +3,7 @@ import {combineReducers} from 'redux';
 // Middlewares
 import * as asyncInitialState from 'redux-async-initial-state';
 // Actions
+import ALL_ACTIONS from './ActionTypes';
 // Fetching data
 import {getFacts} from '../Utils/fetchFactsData';
 
@@ -32,6 +33,12 @@ const loadStore = () => {
 // Reducers
 const factsReducer = (state = [], action) => {
   switch (action.type) {
+    case ALL_ACTIONS.FILTER_FACT_BY_TEXT:
+      return state.map((fact) =>
+        fact.text.toUpperCase().includes(action.payload.text.toUpperCase())
+          ? {...fact, visible: true}
+          : {...fact, visible: false},
+      );
     default:
       return state;
   }
