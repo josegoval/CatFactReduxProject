@@ -1,12 +1,12 @@
 // React
 import React from 'react';
-import {View, FlatList, StyleSheet} from 'react-native';
+import {View, FlatList} from 'react-native';
 // Redux
 import {useSelector} from 'react-redux';
 // Components
 import FactCard from '../Components/FactCard';
 
-export default function SearchFactScreen() {
+export default function SearchFactScreen({navigation}) {
   const facts = useSelector((state) => state.facts);
 
   return (
@@ -15,35 +15,14 @@ export default function SearchFactScreen() {
       <Text>Loading: {String(asyncInitialState.loading)}</Text> */}
       <FlatList
         data={facts}
-        renderItem={({item, id}) => <FactCard fact={item} arrayId={id} />}
+        renderItem={({item}) => (
+          <FactCard
+            fact={item}
+            onPressText={() => navigation.navigate('FactDetails', {fact: item})}
+          />
+        )}
         keyExtractor={(item) => item._id}
       />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  factCard: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 4,
-    backgroundColor: '#F5F5F5',
-    borderBottomWidth: 5,
-    borderBottomColor: '#DFDFDF',
-  },
-  touchableText: {
-    marginLeft: 3,
-    width: '85%',
-    // backgroundColor: 'red',
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: '600',
-    // fontStyle: 'italic',
-  },
-  touchableIcon: {
-    marginHorizontal: 20,
-  },
-});

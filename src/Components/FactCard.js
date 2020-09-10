@@ -1,11 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+// Icons
 import Icon from 'react-native-vector-icons/AntDesign';
 
-export default function FactCard({fact}) {
+export default function FactCard({fact, onPressText}) {
   return (
     <View style={styles.factCard}>
-      <TouchableOpacity style={styles.touchableText}>
+      <TouchableOpacity
+        style={styles.touchableText}
+        onPress={() => onPressText()}>
         <Text numberOfLines={3} style={styles.text}>
           {fact.text}
         </Text>
