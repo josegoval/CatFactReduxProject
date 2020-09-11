@@ -1,5 +1,5 @@
 // React
-import React, {Component} from 'react';
+import React from 'react';
 import {FlatList} from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -12,7 +12,7 @@ import FactCard from './FactCard';
  *
  * @param {Array} facts Array of facts to render
  * @param {Array} navigation Navigation prop
- * @param {Component} RightIcon Icon to show at right which will
+ * @param {element} RightIcon Icon to show at right which will
  * recieve the fact as argument
  */
 export default function FactList({facts, navigation, RightIcon}) {
