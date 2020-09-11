@@ -19,7 +19,11 @@ export default function AddTabScreen() {
         component={AddFactScreen}
         options={{title: 'Add New'}}
       />
-      <TopBarNavigator.Screen name="MyFacts" component={MyFactsScreen} />
+      <TopBarNavigator.Screen
+        name="MyFacts"
+        component={MyFactsScreen}
+        options={{title: 'My Facts'}}
+      />
     </TopBarNavigator.Navigator>
   );
 }
