@@ -13,7 +13,7 @@ sentences about cats, and save it in a personal list which could be modified (ad
       2. ✅ Show all results on flat list in FactCard Component which have favourite icon (no functionality yet).
       3. ✅ Pressing the text navigate to fact details (stack navigator) with all the data.
       4. ✅ Add input (KeyboardAvoidingView) which filter results `*any form*`.
-      5. Favourite functionality: Saves result on `user_data.favourites` array pressing the star.
+      5. ✅ Favourite functionality: Saves/Removes result on `user_data.favourites` array pressing the icon.
    2. **_Favourite Tab Component_**
       1. Show favourites fact in FactCard, though can be removed unchecking the star icon.
       2. Keep the fact info pressing the text (stack navigator) like in _Search Tab Component_.

@@ -5,7 +5,7 @@
  * @returns true if contains it, false if not.
  */
 const findFact = (idOfFactToFind, facts) => {
-  return facts.some((fact) => fact._id === idOfFactToFind);
+  return facts.some((fact) => (fact ? fact._id === idOfFactToFind : false));
 };
 
 export {findFact as default};

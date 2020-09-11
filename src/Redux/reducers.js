@@ -39,13 +39,27 @@ const factsReducer = (state = [], action) => {
           ? {...fact, visible: true}
           : {...fact, visible: false},
       );
+
     default:
       return state;
   }
 };
 
 const userReducer = (state = {}, action) => {
-  return state;
+  switch (action.type) {
+    case ALL_ACTIONS.SAVE_FAVOURITE_FACT:
+      return {...state, favourites: [...state.favourites, action.payload.fact]};
+    case ALL_ACTIONS.REMOVE_FAVOURITE_FACT:
+      return {
+        ...state,
+        favourites: state.favourites.filter(
+          (fact) => fact._id !== action.payload.id,
+        ),
+      };
+
+    default:
+      return state;
+  }
 };
 
 const reducer = asyncInitialState.outerReducer(

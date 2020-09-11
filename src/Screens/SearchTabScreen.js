@@ -1,7 +1,7 @@
 // React
 import React, {useState} from 'react';
 // React Navigation
-import {createStackNavigator, HeaderBackground} from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 // Redux
 import {useDispatch} from 'react-redux';
 // Components

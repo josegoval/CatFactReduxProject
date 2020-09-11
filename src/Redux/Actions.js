@@ -3,7 +3,7 @@ import ALL_ACTIONS from './ActionTypes';
 /**
  * Action for filtering facts by texts which include text
  * @param {String} text
- * @return Object with type and payload to dispatch actions.
+ * @returns Object with type and payload to dispatch actions.
  */
 const filterFactResultsByText = (text) => {
   return {
@@ -12,4 +12,28 @@ const filterFactResultsByText = (text) => {
   };
 };
 
-export {filterFactResultsByText};
+/**
+ * Action for savinga favourite fact to the logged user.
+ * @param {Object} fact
+ * @returns Object with type and payload to dispatch actions.
+ */
+const saveFavouriteFact = (fact) => {
+  return {
+    type: ALL_ACTIONS.SAVE_FAVOURITE_FACT,
+    payload: {fact},
+  };
+};
+
+/**
+ * Action for removing an existing favourite fact to the logged user.
+ * @param {String} fact
+ * @returns Object with type and payload to dispatch actions.
+ */
+const removeFavouriteFact = (id) => {
+  return {
+    type: ALL_ACTIONS.REMOVE_FAVOURITE_FACT,
+    payload: {id},
+  };
+};
+
+export {filterFactResultsByText, saveFavouriteFact, removeFavouriteFact};
