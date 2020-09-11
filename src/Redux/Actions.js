@@ -1,13 +1,25 @@
 import ALL_ACTIONS from './ActionTypes';
 
 /**
- * Action for filtering facts by texts which include text
+ * Action for filtering facts by texts which include text.
  * @param {String} text
  * @returns Object with type and payload to dispatch actions.
  */
 const filterFactResultsByText = (text) => {
   return {
     type: ALL_ACTIONS.FILTER_FACT_BY_TEXT,
+    payload: {text},
+  };
+};
+
+/**
+ * Action for filtering favourite facts by texts which include text.
+ * @param {String} text
+ * @returns Object with type and payload to dispatch actions.
+ */
+const filterFavouriteFactsResultsByText = (text) => {
+  return {
+    type: ALL_ACTIONS.FILTER_FAVOURITE_FACT_BY_TEXT,
     payload: {text},
   };
 };
@@ -36,4 +48,9 @@ const removeFavouriteFact = (id) => {
   };
 };
 
-export {filterFactResultsByText, saveFavouriteFact, removeFavouriteFact};
+export {
+  filterFactResultsByText,
+  filterFavouriteFactsResultsByText,
+  saveFavouriteFact,
+  removeFavouriteFact,
+};

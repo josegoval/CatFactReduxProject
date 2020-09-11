@@ -1,6 +1,5 @@
 // React
 import React from 'react';
-import {View, Text} from 'react-native';
 // React Navigation
 import {NavigationContainer} from '@react-navigation/native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
@@ -44,7 +43,7 @@ function App() {
             component={FavouritesTabScreen}
             options={{
               tabBarLabel: 'Favourites',
-              tabBarColor: '#F3DD0B',
+              tabBarColor: '#EBB50B',
               tabBarIcon: ({color}) => (
                 <MaterialCommunityIcons name="star" color={color} size={26} />
               ),
