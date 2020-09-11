@@ -7,17 +7,12 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-// Redux
-import {useSelector, useDispatch} from 'react-redux';
+// Components
+import FavouriteIcon from '../Components/FavouriteIcon';
 // Icons
 import Icon from 'react-native-vector-icons/AntDesign';
-import {saveFavouriteFact, removeFavouriteFact} from '../Redux/Actions';
-// Utils
-import findFact from '../Utils/findFact';
 
 export default function FactDetailsScreen({route}) {
-  const favouriteFacts = useSelector((state) => state.user_data.favourites);
-  const dispatch = useDispatch();
   const {fact} = route.params;
 
   return (
@@ -39,20 +34,7 @@ export default function FactDetailsScreen({route}) {
           </TouchableOpacity>
           <Text style={styles.upvotesText}>{fact.upvotes}</Text>
         </View>
-        {/* Favourite fact functionality */}
-        {findFact(fact._id, favouriteFacts) ? (
-          <TouchableOpacity
-            style={styles.touchableIcon}
-            onPress={() => dispatch(removeFavouriteFact(fact._id))}>
-            <Icon name="heart" size={40} color="#D33F53" />
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity
-            style={styles.touchableIcon}
-            onPress={() => dispatch(saveFavouriteFact(fact))}>
-            <Icon name="hearto" size={40} color="#D33F53" />
-          </TouchableOpacity>
-        )}
+        <FavouriteIcon fact={fact} />
       </View>
       {/* Creator Details */}
       <Text style={styles.title}>Creator Details</Text>
