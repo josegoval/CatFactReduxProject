@@ -1,10 +1,11 @@
 // React
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import PropTypes from 'prop-types';
 // Components
 import FavouriteIcon from './FavouriteIcon';
 
-export default function FactCard({fact, onPressText}) {
+export default function FactCard({fact, onPressText, RightIcon}) {
   return (
     <View style={styles.factCard}>
       <TouchableOpacity
@@ -14,7 +15,7 @@ export default function FactCard({fact, onPressText}) {
           {fact.text}
         </Text>
       </TouchableOpacity>
-      <FavouriteIcon fact={fact} />
+      {RightIcon ? <RightIcon /> : <FavouriteIcon fact={fact} />}
     </View>
   );
 }
@@ -41,3 +42,9 @@ const styles = StyleSheet.create({
     // fontStyle: 'italic',
   },
 });
+
+FactCard.propTypes = {
+  fact: PropTypes.object.isRequired,
+  onPressText: PropTypes.func.isRequired,
+  RightIcon: PropTypes.element,
+};

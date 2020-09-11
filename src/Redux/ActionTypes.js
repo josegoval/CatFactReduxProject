@@ -2,6 +2,9 @@
 export default {
   // Facts Action Types
   FILTER_FACT_BY_TEXT: 'FILTER_FACT_BY_TEXT',
+  // user_data Action Types
+  // Favourites Action Types
+  FILTER_FAVOURITE_FACT_BY_TEXT: 'FILTER_FAVOURITE_FACT_BY_TEXT',
   SAVE_FAVOURITE_FACT: 'SAVE_FAVOURITE_FACT',
   REMOVE_FAVOURITE_FACT: 'REMOVE_FAVOURITE_FACT',
 };

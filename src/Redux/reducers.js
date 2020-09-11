@@ -47,6 +47,14 @@ const factsReducer = (state = [], action) => {
 
 const userReducer = (state = {}, action) => {
   switch (action.type) {
+    // FAVOURITES
+    case ALL_ACTIONS.FILTER_FAVOURITE_FACT_BY_TEXT:
+      const favourites = state.favourites.map((fact) =>
+        fact.text.toUpperCase().includes(action.payload.text.toUpperCase())
+          ? {...fact, visible: true}
+          : {...fact, visible: false},
+      );
+      return {...state, favourites};
     case ALL_ACTIONS.SAVE_FAVOURITE_FACT:
       return {...state, favourites: [...state.favourites, action.payload.fact]};
     case ALL_ACTIONS.REMOVE_FAVOURITE_FACT:
@@ -56,6 +64,7 @@ const userReducer = (state = {}, action) => {
           (fact) => fact._id !== action.payload.id,
         ),
       };
+    // MY FACTS
 
     default:
       return state;

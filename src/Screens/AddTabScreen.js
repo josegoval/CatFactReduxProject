@@ -1,10 +1,25 @@
+// React
 import React from 'react';
 import {View, Text} from 'react-native';
+// React Navigation
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+// Components
+import AddFactScreen from './AddFactScreen';
+import MyFactsScreen from './MyFactsScreen';
 
-export default function FavouritesTabScreen() {
+const TopBarNavigator = createMaterialTopTabNavigator();
+
+export default function AddTabScreen() {
   return (
-    <View>
-      <Text>asd</Text>
-    </View>
+    <TopBarNavigator.Navigator
+      initialRouteName="AddFacts"
+      tabBarOptions={{labelStyle: {fontSize: 20, fontWeight: 'bold'}}}>
+      <TopBarNavigator.Screen
+        name="AddFacts"
+        component={AddFactScreen}
+        options={{title: 'Add New'}}
+      />
+      <TopBarNavigator.Screen name="MyFacts" component={MyFactsScreen} />
+    </TopBarNavigator.Navigator>
   );
 }
