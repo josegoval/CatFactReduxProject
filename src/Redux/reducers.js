@@ -39,7 +39,10 @@ const factsReducer = (state = [], action) => {
           ? {...fact, visible: true}
           : {...fact, visible: false},
       );
-
+    case ALL_ACTIONS.ADD_NEW_FACT:
+      return [...state, action.payload];
+    case ALL_ACTIONS.REMOVE_MY_FACT:
+      return state.filter((fact) => fact._id !== action.payload.id);
     default:
       return state;
   }
@@ -65,7 +68,22 @@ const userReducer = (state = {}, action) => {
         ),
       };
     // MY FACTS
-
+    case ALL_ACTIONS.FILTER_MY_FACTS_BY_TEXT:
+      const my_facts = state.my_facts.map((fact) =>
+        fact.text.toUpperCase().includes(action.payload.text.toUpperCase())
+          ? {...fact, visible: true}
+          : {...fact, visible: false},
+      );
+      return {...state, my_facts};
+    case ALL_ACTIONS.ADD_NEW_FACT:
+      return {...state, my_facts: [...state.my_facts, action.payload]};
+    case ALL_ACTIONS.REMOVE_MY_FACT:
+      return {
+        ...state,
+        my_facts: state.my_facts.filter(
+          (fact) => fact._id !== action.payload.id,
+        ),
+      };
     default:
       return state;
   }

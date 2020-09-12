@@ -36,5 +36,5 @@ export default function FactList({facts, navigation, RightIcon}) {
 FactList.propTypes = {
   facts: PropTypes.array.isRequired,
   navigation: PropTypes.object.isRequired,
-  RightIcon: PropTypes.element,
+  RightIcon: PropTypes.func,
 };

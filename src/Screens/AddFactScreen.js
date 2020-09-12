@@ -1,5 +1,5 @@
 // React
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,11 +8,22 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
+// Redux
+import {useDispatch, useSelector} from 'react-redux';
+import {addNewFact} from '../Redux/Actions';
 // Icon
 import Icon from 'react-native-vector-icons/AntDesign';
 
+const dimensions = Dimensions.get('window');
+
 export default function AddFactScreen() {
+  const user = useSelector((state) => state.user_data);
+  const dispatch = useDispatch();
+
+  const [inputValue, setInputValue] = useState('');
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Introduce your cat fact!</Text>
@@ -24,9 +35,16 @@ export default function AddFactScreen() {
           style={styles.textInput}
           multiline={true}
           blurOnSubmit={true}
+          value={inputValue}
+          onChangeText={(text) => setInputValue(text)}
         />
       </KeyboardAvoidingView>
-      <TouchableOpacity style={styles.submitButton}>
+      <TouchableOpacity
+        style={styles.submitButton}
+        onPress={() => {
+          dispatch(addNewFact(inputValue, user));
+          setInputValue('');
+        }}>
         <Text style={styles.submitText}>Submit</Text>
         <Icon name="upload" size={30} color="white" />
       </TouchableOpacity>
@@ -62,8 +80,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#1BBD53',
-    width: '40%',
-    height: '10%',
+    width: dimensions.width * 0.4,
+    height: dimensions.height * 0.1,
     marginHorizontal: 200,
     borderRadius: 3,
   },

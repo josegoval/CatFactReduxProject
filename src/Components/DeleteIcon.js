@@ -1,24 +1,17 @@
 // React
 import React from 'react';
-import {View, TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity, StyleSheet} from 'react-native';
 // Redux
-import {useSelector, useDispatch} from 'react-redux';
-import {saveFavouriteFact, removeFavouriteFact} from '../Redux/Actions';
+import {removeFactFromEverywhere} from '../Redux/MultipleSynchronousActions';
 // Icons
 import Icon from 'react-native-vector-icons/AntDesign';
-// Utils
-import findFact from '../Utils/findFact';
 
-export default function DeleteIcon({factId}) {
-  const {
-    facts,
-    user_data: {favourites, my_facts},
-  } = useSelector((state) => state);
-  const dispatch = useDispatch();
-
+export default function DeleteIcon({fact}) {
   return (
     // Delete Fact Functionality
-    <TouchableOpacity style={styles.touchableIcon} onPress={() => dispatch()}>
+    <TouchableOpacity
+      style={styles.touchableIcon}
+      onPress={() => removeFactFromEverywhere(fact._id)}>
       <Icon name="delete" size={40} color="#000000" />
     </TouchableOpacity>
   );

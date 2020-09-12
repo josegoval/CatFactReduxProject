@@ -15,7 +15,7 @@ export default function FactCard({fact, onPressText, RightIcon}) {
           {fact.text}
         </Text>
       </TouchableOpacity>
-      {RightIcon ? <RightIcon /> : <FavouriteIcon fact={fact} />}
+      {RightIcon ? <RightIcon fact={fact} /> : <FavouriteIcon fact={fact} />}
     </View>
   );
 }
@@ -46,5 +46,5 @@ const styles = StyleSheet.create({
 FactCard.propTypes = {
   fact: PropTypes.object.isRequired,
   onPressText: PropTypes.func.isRequired,
-  RightIcon: PropTypes.element,
+  RightIcon: PropTypes.func,
 };

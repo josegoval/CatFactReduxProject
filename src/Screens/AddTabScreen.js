@@ -1,6 +1,5 @@
 // React
 import React from 'react';
-import {View, Text} from 'react-native';
 // React Navigation
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 // Components
