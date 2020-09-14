@@ -7,12 +7,17 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+// Redux
+import {useSelector} from 'react-redux';
 // Components
 import FavouriteIcon from '../Components/FavouriteIcon';
 // Icons
 import Icon from 'react-native-vector-icons/AntDesign';
+// Others
+import findFact from '../Utils/findFact';
 
 export default function FactDetailsScreen({route}) {
+  const facts = useSelector((state) => state.facts);
   const {fact} = route.params;
 
   return (
@@ -23,19 +28,23 @@ export default function FactDetailsScreen({route}) {
       </Text>
       <Text style={styles.factText}>{fact.text}</Text>
       {/* upvotes and favourite */}
-      <View style={styles.interactionsContainer}>
-        <View style={styles.upvotesContainer}>
-          <TouchableOpacity style={styles.touchableIcon}>
-            {fact.userUpvoted ? (
-              <Icon name="like1" size={40} color="#4037BA" />
-            ) : (
-              <Icon name="like2" size={40} color="#4037BA" />
-            )}
-          </TouchableOpacity>
-          <Text style={styles.upvotesText}>{fact.upvotes}</Text>
+      {findFact(fact._id, facts) ? (
+        <View style={styles.interactionsContainer}>
+          <View style={styles.upvotesContainer}>
+            <TouchableOpacity style={styles.touchableIcon}>
+              {fact.userUpvoted ? (
+                <Icon name="like1" size={40} color="#4037BA" />
+              ) : (
+                <Icon name="like2" size={40} color="#4037BA" />
+              )}
+            </TouchableOpacity>
+            <Text style={styles.upvotesText}>{fact.upvotes}</Text>
+          </View>
+          <FavouriteIcon fact={fact} />
         </View>
-        <FavouriteIcon fact={fact} />
-      </View>
+      ) : (
+        <Text style={styles.factDeleted}>This Fact was deleted!</Text>
+      )}
       {/* Creator Details */}
       <Text style={styles.title}>Creator Details</Text>
       <View style={styles.creatorDetailsContainer}>
@@ -87,5 +96,11 @@ const styles = StyleSheet.create({
   },
   creatorDetailsContainer: {
     paddingTop: 5,
+  },
+  factDeleted: {
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#D81838',
   },
 });

@@ -20,6 +20,6 @@ sentences about cats, and save it in a personal list which could be modified (ad
    3. **_Add Tab Component_**
       1. ✅ TopTabNavigator with add and my facts
       2. ✅ Add: Input for the fact and on submit save on facts and `my_facts`.
-      3. My Facts: FlatList of your facts where you can delete it pressing the trash icon.
+      3. ✅ My Facts: FlatList of your facts where you can delete it pressing the trash icon.
    4. **_Profile Tab Component_**
       1. Info (name, favourite facts counter and created facts counter)
