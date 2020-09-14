@@ -43,7 +43,7 @@ export default function FactDetailsScreen({route}) {
           <FavouriteIcon fact={fact} />
         </View>
       ) : (
-        <Text style={styles.factDeleted}>This Fact was deleted!</Text>
+        <Text style={styles.factDeleted}>This fact was deleted!</Text>
       )}
       {/* Creator Details */}
       <Text style={styles.title}>Creator Details</Text>

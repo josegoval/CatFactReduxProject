@@ -23,6 +23,7 @@ export default function AddFactScreen() {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState('');
+  const [canSubmit, setCanSubmit] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -36,14 +37,22 @@ export default function AddFactScreen() {
           multiline={true}
           blurOnSubmit={true}
           value={inputValue}
-          onChangeText={(text) => setInputValue(text)}
+          onChangeText={(text) => {
+            setInputValue(text);
+            text.trim().length > 0 ? setCanSubmit(true) : setCanSubmit(false);
+          }}
         />
       </KeyboardAvoidingView>
       <TouchableOpacity
-        style={styles.submitButton}
+        style={[
+          styles.submitButton,
+          canSubmit ? styles.submitButtonEnabled : styles.submitButtonDisabled,
+        ]}
+        disabled={!canSubmit}
         onPress={() => {
           dispatch(addNewFact(inputValue, user));
           setInputValue('');
+          setCanSubmit(false);
         }}>
         <Text style={styles.submitText}>Submit</Text>
         <Icon name="upload" size={30} color="white" />
@@ -79,11 +88,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1BBD53',
     width: dimensions.width * 0.4,
     height: dimensions.height * 0.1,
     marginHorizontal: 200,
     borderRadius: 3,
+  },
+  submitButtonEnabled: {
+    backgroundColor: '#1BBD53',
+  },
+  submitButtonDisabled: {
+    backgroundColor: '#90eeb1',
   },
   submitText: {
     fontSize: 30,
